@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: ebay-challenge-endpoint
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:10000
+    envVars:
+      - key: VERIFICATION_TOKEN
+        value: your_very_long_verification_token_here
+      - key: ENDPOINT_URL
+        value: https://your-app-name.onrender.com/ebay-challenge
